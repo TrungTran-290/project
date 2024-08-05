@@ -1,10 +1,14 @@
 import React from 'react'
 import Products from '../../components/products/Products'
-// import "./productpage.css"
+import Footer from '../../components/footer/Footer'
+import Header from '../../components/header/Header'
+
 export default function ProductPage() {
   return (
-    <div className='box'>
-      <Products>hello</Products>
-    </div>
+    <>
+      <Header/>
+      <Products/>
+      <Footer/>
+    </>
   )
 }

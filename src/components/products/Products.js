@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Product from '../product/Product'
 import { Row } from 'reactstrap';
-import Header from '../header/Header';
-import Footer from '../footer/Footer';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProducts, deleteProducts, editProduct, getList } from '../../redux/productsSlice';
 import { addToCart, deleteFromCart } from "../../redux/cartSlice"
+
 
 export default function Products() {
   const dispatch = useDispatch()
@@ -31,15 +30,14 @@ export default function Products() {
   },[])
   return (
     <>
-      <Header/>
         <Row className="m-4">
+        
           {
             products.map((item,index)=>(
                 <Product className="d-flex" key={index} products={item}/>
             ))
           }
         </Row>
-      <Footer/>
     </>
   )
 }

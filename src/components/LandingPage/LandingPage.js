@@ -1,28 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./landingpage.css";
 import {
   Box,
-  CardActions,
-  CardMedia,
   Container,
-  Grid,
-  Icon,
   Typography,
-  Card,
-  CardContent,
 } from "@mui/material";
-import img1 from "./keyboard.png";
+import img1 from "../assets/keyboard.png";
 import { useTheme } from "@mui/material/styles";
 import MobileStepper from "@mui/material/MobileStepper";
 import Button from "@mui/material/Button";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import { useDispatch, useSelector } from "react-redux";
+import BestSeller from "../bestsellers/BestSeller";
+import { Row } from "reactstrap";
+import { getList } from "../../redux/productsSlice";
+import Features from "../feature/Features";
+import CarouselMain from "../carousel/CarouselMain";
+import Sale from "../sale/Sale";
+// import Contact from "../contact/Contact";
+import ContactUs from "../contact/ContactUs";
+import Review from "../Review/Review";
 
-import AOS from "aos";
-import "aos/dist/aos.css";
 export default function LandingPage() {
-  AOS.init();
+  const dispatch = useDispatch();
+  const { products } = useSelector((state) => state.products);
+
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -33,7 +37,9 @@ export default function LandingPage() {
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
-
+  useEffect(() => {
+    dispatch(getList());
+  }, [dispatch]);
   return (
     <div className="lander">
       <Container maxWidth={false} className="holder">
@@ -96,8 +102,6 @@ export default function LandingPage() {
                 </Button>
               }
             />
-
-            {/* Text Content */}
             <Typography variant="h1" sx={{ color: "#ffffff", mb: 2 }}>
               Hello Test
             </Typography>
@@ -106,7 +110,7 @@ export default function LandingPage() {
             </Typography>
             <Button
               variant="contained"
-              sx={{ backgroundColor: "#ff5722", color: "#ffffff" }}
+              sx={{ backgroundColor: "#dd3431", color: "#ffffff" }}
             >
               <Link
                 to="/products"
@@ -117,150 +121,64 @@ export default function LandingPage() {
             </Button>
           </Box>
         </div>
-        <Typography variant="h4" component="h2">
-          <Icon> </Icon>
-        </Typography>
-        <Grid container justifyContent="center" alignItems="center" spacing={2}>
-          <Card
-            sx={{ maxWidth: 345, margin: "0px 10px" }}
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            data-aos-delay="200"
-            lg={3}
-            md={4}
-            sm={6}
-            xs={6}
-          >
-            <CardMedia
-              sx={{ height: 140 }}
-              image="/static/images/cards/contemplative-reptile.jpg"
-              title="green iguana"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Lizard
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small">Share</Button>
-              <Button size="small">Learn More</Button>
-            </CardActions>
-          </Card>
-          <Card
-            sx={{
-              maxWidth: 345,
-              margin: "0px 10px",
-              "&:hover": {
-                transform: "scale(1.05)",
-                boxShadow: 6, 
-                color:"orange"
-              },
-            }}
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            data-aos-delay="300"
-            lg={3}
-            md={4}
-            sm={6}
-            xs={6}
-          >
-            <CardMedia
-              sx={{ height: 140 }}
-              image="/static/images/cards/contemplative-reptile.jpg"
-              title="green iguana"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Lizard
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small">Share</Button>
-              <Button size="small">Learn More</Button>
-            </CardActions>
-          </Card>
-          <Card
-            sx={{ maxWidth: 345, margin: "0px 10px" }}
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            data-aos-delay="400"
-            lg={3}
-            md={4}
-            sm={6}
-            xs={6}
-          >
-            <CardMedia
-              sx={{ height: 140 }}
-              image="/static/images/cards/contemplative-reptile.jpg"
-              title="green iguana"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Lizard
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small">Share</Button>
-              <Button size="small">Learn More</Button>
-            </CardActions>
-          </Card>
-          <Card
-            sx={{ maxWidth: 345, margin: "0px 10px" }}
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            data-aos-delay="500"
-            lg={3}
-            md={4}
-            sm={6}
-            xs={6}
-          >
-            <CardMedia
-              sx={{ height: 140 }}
-              image="/static/images/cards/contemplative-reptile.jpg"
-              title="green iguana"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Lizard
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small">Share</Button>
-              <Button size="small">Learn More</Button>
-            </CardActions>
-          </Card>
-        </Grid>
 
-        <div>
-          <h3> 2</h3>
-          <p>Đây là 2.</p>
-        </div>
-        <div>
-          <h3> 3</h3>
-          <p>Đây là 3</p>
-        </div>
-
-        <div>
-          <h2>Đăng Ký </h2>
-          <p> </p>
-          <a href="#signup">Đăng Ký</a>
-        </div>
+        <Container style={{ maxWidth: "1500px" }}>
+          <Row className="py-5">
+            <BestSeller products={products} />
+          </Row>
+        </Container>
+        <Features />
+        <Box sx={{ py: 8 }}>
+          <Container style={{ maxWidth: "1500px" }}>
+            <p className="Title">
+              All <span className="innerTitle">Items</span>
+            </p>
+            <CarouselMain products={products} />
+          </Container>
+        </Box>
+        <Sale />
+        {/* <Box sx={{ py: 8 }}>
+          <Container>
+            <Grid container spacing={1}>
+              {products
+                .filter((product) => product.sale)
+                .slice(0, 4)
+                .map((product) => (
+                  <Grid item xs={12} sm={6} md={3} key={product.id}>
+                    <Card>
+                      <CardMedia
+                        component="img"
+                        height="140"
+                        image={product.image}
+                        alt={product.name}
+                      />
+                      <CardContent>
+                        <Typography variant="h6">{product.name}</Typography>
+                        <Typography variant="body2">
+                          <span style={{ textDecoration: "line-through" }}>
+                            ${product.originalPrice}
+                          </span>{" "}
+                          ${product.price}
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        <Button size="small" color="primary">
+                          <Link
+                            to={`/products/${product.id}`}
+                            style={{ color: "inherit", textDecoration: "none" }}
+                          >
+                            View Details
+                          </Link>
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                ))}
+            </Grid>
+          </Container>
+        </Box> */}
+      <ContactUs/>
+      <Review/>
       </Container>
     </div>
   );

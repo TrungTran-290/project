@@ -16,6 +16,7 @@ const cartSlice = createSlice({
       } else {
         state.cart.push({ ...action.payload, quantity: 1 });
       }
+      
     },
     deleteFromCart(state, action) {
       const { id } = action.payload;

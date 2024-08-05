@@ -3,23 +3,24 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
 import "./style.css";
 import Detail from "./components/product/Detail";
-import Products from "./components/products/Products";
+// import Products from "./components/products/Products";
 import Cart from "./components/cart/Cart";
+import ProductPage from "./pages/productpage/ProductPage";
+import ContactPage from "./pages/ContactPage/ContactPage";
+import PaymentPage from "./pages/PaymentPage/PaymentPage";
 export default function App() {
   return (
     <div>
-      {/* <Header /> */}
-      {/* <AppProvider> */}
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/products/" element={<Products />} />
+            <Route path="/products/" element={<ProductPage />} />
             <Route path="/detail/:id" element={<Detail />} />
             <Route path="/cart/" element={<Cart />} />
+            <Route path="/contact/" element={<ContactPage />} />
+            <Route path="/payment/" element={<PaymentPage />} />
           </Routes>
         </BrowserRouter>
-      {/* </AppProvider> */}
-      {/* <Footer /> */}
     </div>
   );
 }
