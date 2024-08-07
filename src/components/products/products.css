@@ -1,8 +1,9 @@
 .product-card {
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   /* width: 400px;
   height: 350px; */
+  padding:0 !important;
 }
 .product-card-img {
   background-repeat: no-repeat;

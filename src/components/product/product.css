@@ -1,10 +1,35 @@
-.productpicture {
-  object-fit: contain;
-  position: absolute;
-  height: 70%;
-  width: 70%;
-  bottom: 0;
-  right: 0;
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.product-card:hover {
+  transform: scale(1.03);
+}
+.product-image-container {
+  overflow: hidden;
+  border-bottom: 1px solid #ddd;
+}
+.product-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.product-title {
+  margin-bottom: 10px;
+}
+.view-details-button {
+  text-decoration: none;
+  color: #007bff;
+}
+.view-details-button:hover {
+  text-decoration: underline;
+}
+.product-description {
+  margin-top: 10px;
+  line-height: 1.5;
 }
 .Card_custom {
   transition: 0.3s;

@@ -138,18 +138,18 @@ export default function Header() {
           </MuiMenuItem>
           <MuiMenuItem>
             <Link
-              to="/collection"
+              to="/cart"
               style={{ textDecoration: "none", color: "#1E3A8A" }}
             >
-              Bộ Sưu Tập
+              Giỏ Hàng
             </Link>
           </MuiMenuItem>
           <MuiMenuItem>
             <Link
-              to="/blog"
+              to="/payment"
               style={{ textDecoration: "none", color: "#1E3A8A" }}
             >
-              Blog
+              Thanh Toán
             </Link>
           </MuiMenuItem>
           <MuiMenuItem>
@@ -166,6 +166,14 @@ export default function Header() {
         <svg class="svgIcon" viewBox="0 0 384 512">
           <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
         </svg>
+      </button>
+      <button class="phone" onClick={() => scrollToTop()}>
+      <Typography variant="body1" sx={{ padding: "16px", textAlign: "center" }}>
+            Call us at: 000 000 0000
+          </Typography>
+        <div className="container_phone">
+          <i class="fa-solid fa-phone" style={{color:"white"}}></i>
+        </div>
       </button>
     </AppBar>
   );

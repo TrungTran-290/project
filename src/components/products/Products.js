@@ -32,7 +32,7 @@ export default function Products() {
           data-aos="fade-left"
           data-aos-anchor="#example-anchor"
           data-aos-offset="500"
-          data-aos-duration="500"
+          data-aos-duration="2500"
         >
           <img className="product-card-img" src={img1} alt="test"></img>
         </div>

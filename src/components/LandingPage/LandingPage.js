@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import img1 from "../assets/keyboard.png";
 import img2 from "../assets/product2.png"
-import img3 from "../assets/product2.png"
+import img3 from "../assets/product3.png"
 import { useTheme } from "@mui/material/styles";
 import MobileStepper from "@mui/material/MobileStepper";
 import Button from "@mui/material/Button";
@@ -165,46 +165,6 @@ export default function LandingPage() {
         </Box>
         <Relatedbrand/>
         <Sale />
-        {/* <Box sx={{ py: 8 }}>
-          <Container>
-            <Grid container spacing={1}>
-              {products
-                .filter((product) => product.sale)
-                .slice(0, 4)
-                .map((product) => (
-                  <Grid item xs={12} sm={6} md={3} key={product.id}>
-                    <Card>
-                      <CardMedia
-                        component="img"
-                        height="140"
-                        image={product.image}
-                        alt={product.name}
-                      />
-                      <CardContent>
-                        <Typography variant="h6">{product.name}</Typography>
-                        <Typography variant="body2">
-                          <span style={{ textDecoration: "line-through" }}>
-                            ${product.originalPrice}
-                          </span>{" "}
-                          ${product.price}
-                        </Typography>
-                      </CardContent>
-                      <CardActions>
-                        <Button size="small" color="primary">
-                          <Link
-                            to={`/products/${product.id}`}
-                            style={{ color: "inherit", textDecoration: "none" }}
-                          >
-                            View Details
-                          </Link>
-                        </Button>
-                      </CardActions>
-                    </Card>
-                  </Grid>
-                ))}
-            </Grid>
-          </Container>
-        </Box> */}
       <ContactUs/>
       <Review/>
       </Container>

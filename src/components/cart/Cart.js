@@ -10,7 +10,7 @@ import {
   Col,
 } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteFromCart } from "../../redux/cartSlice";
+import { deleteFromCart, updateCartItem } from "../../redux/cartSlice";
 import { Link } from "react-router-dom";
 import { Divider } from "@mui/material";
 import Aos from "aos";
@@ -20,7 +20,9 @@ import Swal from 'sweetalert2'
 export default function Cart() {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
-
+const updateById = (item,flag)=>{
+  dispatch(updateCartItem({id:item.id,flag}));
+}
   const handleDelete = (id) => {
     Swal.fire({
       // title: "Are you sure?",
@@ -45,6 +47,7 @@ export default function Cart() {
   };
   useEffect(() => {
     Aos.init({ duration: 1000 });
+    window.scrollTo(0,0)
   }, []);
   
   return (
@@ -58,7 +61,9 @@ export default function Cart() {
         </p>
         <Row>
           {cart.length === 0 ? (
-            <Col>
+            <Col data-aos="fade-left"
+            data-aos-anchor="#example-anchor"
+            data-aos-offset="500">
               <h4 className="text-center">Giỏ hàng của bạn trống</h4>
             </Col>
           ) : (
@@ -79,7 +84,9 @@ export default function Cart() {
                   <CardBody>
                     <CardTitle tag="h5">{item.name}</CardTitle>
                     <CardText>Giá: {item.price}$</CardText>
-                    <CardText>Số lượng: {item.quantity}</CardText>
+                    <td><Button onClick={()=>updateById(item,0)}>-</Button> <span>Số lượng: {item.quantity}</span>
+                    <Button onClick={()=>updateById(item,1)}>+</Button></td> 
+                   
                     <Button
                       color="danger"
                       onClick={() => handleDelete(item.id)}
@@ -92,7 +99,9 @@ export default function Cart() {
             ))
           )}
         </Row>
-        <div className="text-center">
+        <div className="text-center" data-aos="fade-up"
+              data-aos-anchor="#example-anchor"
+              data-aos-offset="500">
           <Link to="/payment" >
            <Button className="my-4">Thanh Toán</Button> 
           </Link>
@@ -102,5 +111,3 @@ export default function Cart() {
   );
 }
 
-    {/* <td><Button onClick={()=>updateById(item.id,0)}>-</Button><span>{item.quantity}</span>
-                    <Button onClick={()=>updateById(item.id,1)}>+</Button></td> */}

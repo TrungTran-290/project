@@ -13,12 +13,13 @@ const slideImages = [img1, img2, img3, img4, img5];
 const sliderSettings = {
   dots: false,
   infinite: true,
-  speed: 500,
-  slidesToShow: 5,
+  slidesToShow: 4,
   slidesToScroll: 1,
   autoplay: true,
-  autoplaySpeed: 3000,
-  pauseOnHover: true
+  speed: 2500,
+  autoplaySpeed: 1,
+  pauseOnHover: true,
+  cssEase:"linear"
 };
 
 export default function Relatedbrand() {
@@ -32,7 +33,7 @@ export default function Relatedbrand() {
         <Slider {...sliderSettings}>
           {slideImages.map((img, index) => (
             <div key={index}>
-              <img className="logo_brand" src={img} alt={`brand-${index}`} style={{ width: '50%' , margin:"0 auto" }} />
+              <img className="logo_brand" src={img} alt={`brand-${index}`} style={{ width: '70%' , margin:"0 auto" }} />
             </div>
           ))}
         </Slider>

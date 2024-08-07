@@ -29,6 +29,7 @@ export default function Detail() {
         </Col>
         <Col md={4}>
           {pro ? (
+            <>
             <div className="product-detail">
               <Typography variant="h4" component="div" className="product-name">
                 {pro.name}
@@ -40,8 +41,8 @@ export default function Detail() {
               <Typography variant="h5" component="div" className="product-price">
                 ${pro.price} <span className="original-price">${pro.originalPrice}</span>
               </Typography>
-              <Typography variant="body2" color="text.secondary" className="product-availability">
-                Availability: {pro.availability ? 'In Stock' : 'Out of Stock'}
+              <Typography variant="body2" color="text.secondary" className="product-category">
+                Category: {pro.category}
               </Typography>
 
               <CardActions>
@@ -50,6 +51,15 @@ export default function Detail() {
                 </Button>
               </CardActions>
             </div>
+            <div className="product-detail">
+            <Typography variant="h5"  className="product-description">
+                Details:  
+              </Typography>
+            <Typography variant="body2" color="text.secondary" className="product-description">
+                {pro.descriptionLong}
+              </Typography>
+              </div>
+            </>
           ) : (
             <Typography variant="h6" color="text.secondary">
               Product not found
@@ -60,10 +70,10 @@ export default function Detail() {
       <Row className="justify-content-center">
         <Col md={8} className="text-center">
           <Link to="/">
-            <Button>Trang Chủ</Button>
+            <Button className="m-3">Trang Chủ</Button>
           </Link>
-          <Link to="/products">
-            <Button>Shop</Button>
+          <Link to="/products" >
+            <Button className="m-3">Của Hàng</Button>
           </Link>
         </Col>
       </Row>
