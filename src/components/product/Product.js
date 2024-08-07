@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/cartSlice";
 import "./product.css";
 import Aos from "aos";
+import Swal from 'sweetalert2'
 
 export default function Product({ products, onAddToCart }) {
   const dispatch = useDispatch();
@@ -12,6 +13,11 @@ export default function Product({ products, onAddToCart }) {
     Aos.init();
   }, []);
   const handle_add = (x) => {
+    Swal.fire({
+      // title: "Good job!",
+      text: "Item has been added!",
+      icon: "success"
+    });
     dispatch(addToCart(x));
   };
 

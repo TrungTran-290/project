@@ -25,7 +25,7 @@ export default function BestSeller({ products }) {
   };
   return (
     <>
-      <p className="Title">
+      <p className="Title"  data-aos="zoom-in">
         Best <span className="innerTitle">Sellers</span>
       </p>
       {products.slice(0, 4).map((item, index) => (
