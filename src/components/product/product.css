@@ -1,12 +1,20 @@
+.newfont{
+  font-size: 16px;
+  font-family: "Obitron", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
 .product-card {
   border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease;
 }
 .product-card:hover {
   transform: scale(1.03);
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
 .product-image-container {
   overflow: hidden;
@@ -16,6 +24,11 @@
   width: 100%;
   height: auto;
   object-fit: cover;
+  transition: 1s;
+}
+.product-image:hover{
+  scale: 1.05;
+  box-shadow: rgba(50, 50, 93, 0.35) 0px 40px 70px -22px inset, rgba(0, 0, 0, 0.5) 0px 28px 46px -28px inset;
 }
 .product-title {
   margin-bottom: 10px;
@@ -43,9 +56,10 @@
   box-shadow: rgba(136, 165, 191, 0.8) 6px 2px 26px 0px,
     rgba(255, 255, 255, 0.8) -6px -2px 26px 0px;
 }
-.links{
-    text-decoration: none;
+.btn-link{
+    text-decoration: none !important;
     color: #333;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 .btn {
   --color: #ff0000 !important;
@@ -62,7 +76,6 @@
   backdrop-filter: blur(5px);
   background-color: transparent !important;
 }
-
 .btn::after,
 .btn::before {
   content: "";
@@ -99,4 +112,7 @@
 .btn:active {
   filter: brightness(0.7);
   transform: scale(0.98);
+}
+.contain_button{
+  width: 100%;
 }

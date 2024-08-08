@@ -12,8 +12,7 @@ export default function Product({ products, onAddToCart }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    Aos.init();
+    // Aos.init();
   }, []);
 
   const handleAdd = (product) => {
@@ -27,10 +26,10 @@ export default function Product({ products, onAddToCart }) {
   return (
     <Col
       lg={4}
-      md={4}
+      md={6}
       sm={6}
-      xs={12}
-      className="mb-4"
+      xs={6}
+      className="newfont mb-4"
       data-aos={products.id % 2 === 0 ? "flip-left" : "flip-right"}
       data-aos-duration="1500"
     >
@@ -41,19 +40,19 @@ export default function Product({ products, onAddToCart }) {
         <CardBody>
           <CardTitle tag="h5" className="product-title">
             <Typography variant="h6">{products.name}</Typography>
-            <Typography variant="h5" color="primary">${products.price}</Typography>
+            <Typography variant="h5" >${products.price}</Typography>
           </CardTitle>
           <CardText>
             <Rating name="read-only" value={products.rating} readOnly precision={0.1} />
-            <Typography variant="body2" color="text.secondary" className="product-description">
+            <Typography variant="body2" className="product-description">
               {products.description}
             </Typography>
           </CardText>
-          <div className="d-flex mt-2 justify-content-between">
-            <Link to={`/detail/${products.id}`} className="btn btn-link view-details-button">View Details</Link>
-            <Button color="primary" onClick={() => handleAdd(products)} className="add-to-cart-button">
-            Add to Cart
-          </Button>
+          <div className="contain_button d-flex mt-2 justify-content-between">
+            <Link to={`/product/detail/${products.id}`} className="btn-chi-tiet">Details</Link>
+            <button className="btn-chi-tiet" onClick={() => handleAdd(products)} >
+            Add
+          </button>
           </div>
         </CardBody>
       </Card>

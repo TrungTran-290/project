@@ -9,7 +9,7 @@ import { addToCart } from "../../redux/cartSlice";
 
 export default function Detail() {
   const { id } = useParams();
-  const { products } = useSelector((state) => state.products);
+  const { products,status } = useSelector((state) => state.products);
   const pro = products.find((item) => item.id === id);
   const dispatch = useDispatch();
   const handle_add = (x) => {
@@ -17,8 +17,7 @@ export default function Detail() {
   };
   useEffect(() => {
     dispatch(getList());
-  }, [dispatch]);
-
+  }, [dispatch,status]);
   return (
     <div className="detail-container">
       <Row className="justify-content-center">
@@ -30,7 +29,7 @@ export default function Detail() {
         <Col md={4}>
           {pro ? (
             <>
-            <div className="product-detail">
+            <div className="product-detail" data-aos="zoom-out-down">
               <Typography variant="h4" component="div" className="product-name">
                 {pro.name}
               </Typography>
@@ -51,7 +50,7 @@ export default function Detail() {
                 </Button>
               </CardActions>
             </div>
-            <div className="product-detail">
+            <div className="product-detail" data-aos="zoom-in-down">
             <Typography variant="h5"  className="product-description">
                 Details:  
               </Typography>
