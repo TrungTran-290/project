@@ -14,6 +14,7 @@ import { getList } from "../../redux/productsSlice";
 import { useDispatch } from "react-redux";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { Divider } from "@mui/material";
 
 export default function CarouselProducts({ products }) {
   const dispatch =useDispatch()
@@ -26,19 +27,20 @@ export default function CarouselProducts({ products }) {
     <Row >
       {products.slice(0, 12).map((item, index) => (
         <Col lg={3} md={3} sm={6} xs={6} className="mb-4" key={item.id} data-aos="zoom-in">
-          <Card className="contain">
+          <Card className="contain h-100 d-flex flex-column">
             <CardBody>
               <CardTitle tag="h5">{item.name}</CardTitle>
               <CardSubtitle className="mb-2 text-muted" tag="h6">
                 {item.subtitle}
               </CardSubtitle>
+              <Divider/>
               <CardText>
-                <p>{item.description}</p>
+                <p>{item.category}</p>
               </CardText>
               <div className="image-container"></div>
             </CardBody>
-            <img className="image_carousel" src={item.picture}></img>
-            <Link className=" btn-chi-tiet" to={`/detail/${item.id}`}>
+            <img className="image_carousel" src={item.picture} alt="test"></img>
+            <Link className="btn-chi-tiet2" to={`/detail/${item.id}`}>
               Chi tiết
             </Link>
           </Card>

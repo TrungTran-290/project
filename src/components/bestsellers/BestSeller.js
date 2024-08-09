@@ -2,11 +2,9 @@ import React, { useEffect } from "react";
 import {
   Card,
   CardBody,
-  CardSubtitle,
   CardText,
   CardTitle,
   Col,
-  Button
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -15,10 +13,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Rating, Typography } from "@mui/material";
 import "./bestseller.css";
+import { red } from '@mui/material/colors';
 
 export default function BestSeller({ products }) {
   const dispatch = useDispatch();
-
+  const danger = red[500];
   useEffect(() => {
     AOS.init();
   }, []);
@@ -49,14 +48,14 @@ export default function BestSeller({ products }) {
             data-aos-duration="1000"
             data-aos-delay={`${1000 - index * 250}`}
           >
-            <Card className="product-card">
+            <Card className="product-card h-100 d-flex flex-column">
               <div className="product-image-container">
                 <img className="product-image" src={item.picture} alt={item.name} />
               </div>
               <CardBody>
                 <CardTitle tag="h5" className="product-title">
                   <Typography variant="h6">{item.name}</Typography>
-                  <Typography variant="h5" color="primary">${item.price}</Typography>
+                  <Typography variant="h5" color={danger}>${item.price}</Typography>
                 </CardTitle>
                 <CardText>
                   <Rating name="read-only" value={item.rating} readOnly precision={0.1} />

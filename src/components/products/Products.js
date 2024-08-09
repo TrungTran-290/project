@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Product from "../product/Product";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col} from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getList } from "../../redux/productsSlice";
 import { addToCart } from "../../redux/cartSlice";
 import { Divider } from "@mui/material";
 import img1 from "../assets/home1-banner-1.png";
-import Filter from "./Filter";
-import "./products.css";
 import Aos from "aos";
+import "./products.css";
 
 export default function Products() {
   const dispatch = useDispatch();
@@ -28,18 +27,34 @@ export default function Products() {
     dispatch(addToCart(item));
   };
 
-  const handleFilter = ({ name }) => {
+  const handleFilter = ({ name, category }) => {
     const filtered = products.filter((product) => {
-      return name
+      const matchesName = name
         ? product.name.toLowerCase().includes(name.toLowerCase())
         : true;
+      const matchesCategory = category
+        ? product.category.toLowerCase() === category.toLowerCase()
+        : true;
+
+      return matchesName && matchesCategory;
     });
     setFilteredProducts(filtered);
   };
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState("");
 
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+    handleFilter({ name: e.target.value, category });
+  };
+
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
+    handleFilter({ name, category: e.target.value });
+  };
   return (
     <Container style={{ overflow: "hidden" }}>
-      <Row className="">
+      <Row>
         <p className="Title" data-aos="zoom-out-down">
           Products<span className="innerTitle"></span>
         </p>
@@ -53,7 +68,7 @@ export default function Products() {
           <img className="product-card-img" src={img1} alt="test" />
         </div>
         <Divider sx={{ my: 2 }} />
-        <Row style={{margin:"0 auto", padding:0}}>
+        <Row style={{ margin: "0 auto", padding: 0 }}>
           <Col lg={10} md={10} sm={10} xs={12}>
             <Row>
               {filteredProducts.map((item, index) => (
@@ -66,7 +81,26 @@ export default function Products() {
             </Row>
           </Col>
           <Col lg={2} md={2} sm={2} className="filter-col">
-            <Filter onFilter={handleFilter} />
+            <div className="filter-container">
+              <input
+                type="text"
+                placeholder="Filter by name"
+                value={name}
+                onChange={handleNameChange}
+                className="filter-input"
+              />
+              <select
+                value={category}
+                onChange={handleCategoryChange}
+                className="filter-select"
+              >
+                 <option value="">All</option>
+                 <option value="CPUs">CPUs</option>
+                 <option value="Graphics Cards">Graphics Cards</option>
+                 <option value="Memory">Memory</option>
+                 <option value="Monitors">Monitors</option>
+              </select>
+            </div>
           </Col>
         </Row>
       </Row>
