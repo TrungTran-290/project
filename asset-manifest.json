@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/project/static/css/main.75af96e3.css",
-    "main.js": "/project/static/js/main.5c5b1d04.js",
+    "main.css": "/project/static/css/main.6e84d916.css",
+    "main.js": "/project/static/js/main.17d23ddd.js",
     "static/media/product2.png": "/project/static/media/product2.b6f6a938f23f0ee2de0e.png",
     "static/media/backgroundLanding.jpeg": "/project/static/media/backgroundLanding.aa7dfa2c135a921227cc.jpeg",
     "static/media/home1-sale.png": "/project/static/media/home1-sale.a06cf004029ed21183a2.png",
@@ -14,11 +14,11 @@
     "static/media/iconma.png": "/project/static/media/iconma.6cc3e2ed31d247986a30.png",
     "static/media/iconfe.png": "/project/static/media/iconfe.e3d423551974f07ab9f7.png",
     "index.html": "/project/index.html",
-    "main.75af96e3.css.map": "/project/static/css/main.75af96e3.css.map",
-    "main.5c5b1d04.js.map": "/project/static/js/main.5c5b1d04.js.map"
+    "main.6e84d916.css.map": "/project/static/css/main.6e84d916.css.map",
+    "main.17d23ddd.js.map": "/project/static/js/main.17d23ddd.js.map"
   },
   "entrypoints": [
-    "static/css/main.75af96e3.css",
-    "static/js/main.5c5b1d04.js"
+    "static/css/main.6e84d916.css",
+    "static/js/main.17d23ddd.js"
   ]
 }
