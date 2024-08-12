@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import emailjs from 'emailjs-com';
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Swal from 'sweetalert2';
 import {
   Box,
   Container,
@@ -25,11 +26,21 @@ export default function Contact() {
     emailjs.sendForm('service_4sarhv9', 'template_ynu7qba', event.target)
       .then((result) => {
         console.log('Success:', result.text);
-        alert('Message sent successfully!');
+        Swal.fire({
+          title: 'Success!',
+          text: 'Message sent successfully!',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
         event.target.reset(); 
       }, (error) => {
         console.error('Error:', error.text);
-        alert('Failed to send message.');
+        Swal.fire({
+          title: 'Error!',
+          text: 'Failed to send message.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
       });
   };
 
@@ -107,19 +118,19 @@ export default function Contact() {
               </Box>
             </Grid>
             <Grid item xs={12} md={6} data-aos="fade-left">
-              <Typography variant="h6" className="contact-info-title">
+              <Typography sx={{ mb: 2 }} variant="h6" className="contact-info-title">
                 Số liên hệ{" "}
               </Typography>
-              <Typography variant="body1" className="contact-info">
+              <Typography sx={{ mb: 2 }} variant="body1" className="contact-info">
                 <strong>Email:</strong> test@company.com
               </Typography>
-              <Typography variant="body1" className="contact-info">
+              <Typography sx={{ mb: 2 }} variant="body1" className="contact-info">
                 <strong>Phone:</strong> +123 456 7890
               </Typography>
-              <Typography variant="body1" className="contact-info">
+              <Typography sx={{ mb: 2 }} variant="body1" className="contact-info">
                 <strong>Address:</strong> 123 Street, City, Country
               </Typography>
-              <Typography variant="body2" className="contact-note">
+              <Typography sx={{ mb: 2 }} variant="body2" className="contact-note">
                 Chúng tôi sẵn sàng trả lời các câu hỏi của bạn. Hãy liên hệ
                 chúng tôi và chúng tôi sẽ trả lời sớm nhất có thể.
               </Typography>
