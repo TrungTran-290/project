@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import emailjs from 'emailjs-com';
 import AOS from "aos";
 import "aos/dist/aos.css";
 import {
@@ -14,8 +15,23 @@ import "./contact.css";
 export default function Contact() {
   useEffect(() => {
     AOS.init({ duration: 1000 });
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0);
+    emailjs.init('P1jlrFA2eFxgkYfq_');
   }, []);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    
+    emailjs.sendForm('service_4sarhv9', 'template_ynu7qba', event.target)
+      .then((result) => {
+        console.log('Success:', result.text);
+        alert('Message sent successfully!');
+        event.target.reset(); 
+      }, (error) => {
+        console.error('Error:', error.text);
+        alert('Failed to send message.');
+      });
+  };
 
   return (
     <div className="contact-container">
@@ -52,13 +68,14 @@ export default function Contact() {
                   Hãy điền thông tin vào form bên dưới và chúng tôi sẽ liên hệ
                   với bạn sớm nhất có thể.
                 </Typography>
-                <form noValidate autoComplete="off" style={{ width: "100%" }}>
+                <form noValidate autoComplete="off" onSubmit={handleSubmit} style={{ width: "100%" }}>
                   <TextField
                     fullWidth
                     label="Name"
                     variant="outlined"
                     margin="normal"
                     required
+                    name="name" 
                   />
                   <TextField
                     fullWidth
@@ -66,6 +83,7 @@ export default function Contact() {
                     variant="outlined"
                     margin="normal"
                     required
+                    name="email" 
                   />
                   <TextField
                     fullWidth
@@ -75,9 +93,10 @@ export default function Contact() {
                     multiline
                     rows={4}
                     required
+                    name="message" 
                   />
                   <Button
-                  className="submit_buy"
+                    className="submit_buy"
                     variant="contained"
                     sx={{ mt: 2, backgroundColor: "#dd3431" }}
                     type="submit"
