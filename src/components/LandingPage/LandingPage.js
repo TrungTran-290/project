@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./landingpage.css";
 import {
   Box,
   Container,
-  Typography,Link
+  Typography
 } from "@mui/material";
 import img1 from "../assets/product1.png";
 import img2 from "../assets/product2.png"
@@ -37,11 +37,10 @@ export default function LandingPage() {
       src: img3,
     },
   ];
-  useEffect(() => {
-    window.scrollTo(0,0)
-  }, []);
+  
   useEffect(() => {
     dispatch(getList());
+    window.scrollTo(0,0)
     Aos.init();
   }, [dispatch]);
   const sliderSettings = {
@@ -80,21 +79,27 @@ export default function LandingPage() {
                       className="landing_carousel"
                       alt="test"
                       style={{
-                        width: '100%',height:"auto", objectFit: 'contain',margin:"0 auto"
+                       maxWidth:"545px", width: '100%',height:"auto", objectFit: 'contain',margin:"0 auto"
                       }}
                     />
                   </div>
                 ))}
               </Slider>
             </Container>
-            <Typography variant="h3" sx={{ color: "#ffffff", mb: 1 }} data-aos="fade-right"data-aos-duration="1500">
-              Test
-            </Typography>
-            <Typography variant="body2" sx={{ color: "#ffffff", mb: 1 }} data-aos="zoom-out"data-aos-duration="1500">
-              Test
+            <div className="d-flex">
+            <p className="Title3"  data-aos="fade-right"data-aos-duration="1500">
+            Tech 
+            </p>
+            <div style={{ width: '20px' }}></div>
+            <p className="Title3"  data-aos="fade-left"data-aos-duration="1500">
+              <span className="innerTitle3" > Trend</span>
+            </p>
+            </div>
+            <Typography variant="body2" sx={{ color: "#ffffff", my: 1 }} data-aos="zoom-out" data-aos-duration="1500">
+              Discover top-quality peripherals that enhance your productivity and gaming
             </Typography>
             <Link className="appbar"
-              href="/products"
+              to="/products"
               style={{ color: "inherit", textDecoration: "none" }}data-aos="zoom-out"data-aos-duration="1500"
             >
               Mua
@@ -125,7 +130,8 @@ export default function LandingPage() {
         <Relatedbrand/>
         <Sale />
       <ContactUs/>
-      <Review/>
+
+          <Review />
       </Container>
     </div>
   );

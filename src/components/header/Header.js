@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AppBar,
   Toolbar,
   IconButton,
   Typography,
   Badge,
-  Button,
   Drawer,
   InputBase,
   MenuItem as MuiMenuItem,
-  Link,
   Divider,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -18,18 +16,26 @@ import SearchIcon from "@mui/icons-material/Search";
 import logo from "../assets/l.png";
 import { useSelector } from "react-redux";
 import "./header.css";
-import "./extrastyle.css"
 import BreadcrumbsComponent from "../BreadCrumbs";
-import { useNavigate  } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import HomeIcon from '@mui/icons-material/Home';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import MessageIcon from '@mui/icons-material/Message';
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 export default function Header() {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [showPhoneNumber, setShowPhoneNumber] = useState(false);
   const cart = useSelector((state) => state.cart.cart);
 
+  useEffect(() => {
+    Aos.init();
+  }, []);
+  
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -58,7 +64,7 @@ export default function Header() {
       top: 0,
       behavior: "smooth",
     });
-  }
+  };
   return (
     <>
       <AppBar
@@ -73,10 +79,11 @@ export default function Header() {
             aria-label="menu"
             onClick={toggleDrawer}
           >
-            <MenuIcon/>
+            <MenuIcon />
           </IconButton>
+          <div style={{width:20}}></div>
           <Typography variant="h6" sx={{ flexGrow: 1, color: "black" }}>
-            <Link href="/" style={{ textDecoration: "none", color: "#1E3A8A" }}>
+            <Link to="/" style={{ textDecoration: "none", color: "#1E3A8A" }}>
               <img src={logo} alt="Logo" width="200" height="50" />
             </Link>
           </Typography>
@@ -109,10 +116,10 @@ export default function Header() {
               <SearchIcon />
             </IconButton>
           </div>
-          <IconButton className="cartstyle"color="inherit" sx={{ padding: 0 }}>
+          <IconButton className="cartstyle" color="inherit" sx={{ padding: 0 }}>
             <Badge badgeContent={cart.length} color="error">
               <Link
-                href="/cart"
+                to="/cart"
                 style={{
                   color: "inherit",
                   textDecoration: "none",
@@ -127,11 +134,12 @@ export default function Header() {
         </Toolbar>
         <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer}>
           <div
-            className="Menubar"
+            className=" Menubar"
             style={{ width: 250, backgroundColor: "#fff", height: "100%" }}
           >
             <Typography
               variant="h6"
+              data-aos="fade-down"data-aos-duration="900"
               sx={{
                 padding: "46px",
                 backgroundColor: "#F3F4F6",
@@ -141,37 +149,20 @@ export default function Header() {
             >
               Menu Bar
             </Typography>
-
-            <Divider />{" "}
-            <MuiMenuItem>
-              <Link href="/" sx={{my:1}} style={{ textDecoration: "none" }}>
-                Trang Chủ
-              </Link>
-            </MuiMenuItem>
-            <MuiMenuItem>
-              <Link href="/products" sx={{my:1}} style={{ textDecoration: "none" }}>
-                Sản Phẩm
-              </Link>
-            </MuiMenuItem>
-            <MuiMenuItem>
-              <Link
-                href="/cart" sx={{my:1}}
-                style={{ textDecoration: "none"}}
-              >
-                Giỏ Hàng
-              </Link>
-            </MuiMenuItem>
-            <MuiMenuItem>
-              <Link href="/payment" sx={{my:1}} style={{ textDecoration: "none" }}>
-                Thanh Toán
-              </Link>
-            </MuiMenuItem>
-            <MuiMenuItem>
-              <Link href="/contact" sx={{my:1}} style={{ textDecoration: "none" }}>
-                Liên Hệ
-              </Link>
-            </MuiMenuItem>
-            <Divider className="m-0"/>
+            
+            <Link to="/" style={{ textDecoration: "none" ,color: "black",}} >
+             <MuiMenuItem sx={{ my: 2 }} data-aos="fade-left"data-aos-duration="900"data-aos-delay="0"> <HomeIcon/><div style={{width:20}}></div>Trang Chủ</MuiMenuItem>
+            </Link>
+            <Link to="/products" style={{ textDecoration: "none",color: "black", }}>
+              <MuiMenuItem sx={{ my: 2 }} data-aos="fade-left"data-aos-duration="900" data-aos-delay="300"><ShoppingBagIcon/><div style={{width:20}}></div>Sản Phẩm</MuiMenuItem>
+            </Link>
+            <Link to="/cart" style={{ textDecoration: "none" ,color: "black",}}>
+              <MuiMenuItem sx={{ my: 2 }} data-aos="fade-left"data-aos-duration="900" data-aos-delay="600"><ShoppingCartIcon/><div style={{width:20}}></div>Giỏ Hàng</MuiMenuItem>
+            </Link>
+            <Link to="/contact" style={{ textDecoration: "none" ,color: "black",}}>
+              <MuiMenuItem sx={{ my: 2 }} data-aos="fade-left"data-aos-duration="900" data-aos-delay="900"><MessageIcon/><div style={{width:20}}></div>Liên Hệ</MuiMenuItem>
+            </Link>
+            <Divider className="m-0" />
           </div>
         </Drawer>
         <button className="totop" onClick={scrollToTop}>
@@ -180,7 +171,7 @@ export default function Header() {
           </svg>
         </button>
         <section className="call-button">
-          <p className="cc-calto-action-ripple" href="">
+          <p className="cc-calto-action-ripple" to="">
             <i>
               <svg
                 stroke="currentColor"
