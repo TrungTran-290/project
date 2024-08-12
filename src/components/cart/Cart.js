@@ -96,7 +96,9 @@ export default function Cart() {
               ) : (
                 <>
                   <Grid container spacing={2} sx={{ fontWeight: 700, mb: 2 }}>
-                    <Grid item xs={3}>
+                    <Grid item xs={1}>
+                    </Grid>
+                    <Grid item xs={2}>
                       Product
                     </Grid>
                     <Grid item xs={2}>
@@ -124,8 +126,16 @@ export default function Cart() {
                             sx={{
                               display: "flex",
                               alignItems: "center",
+                              textAlign: "center",
+                              flexWrap:"wrap",
                             }}
                           >
+                            <Typography
+                              variant="body1"
+                              sx={{ fontWeight: 500 }}
+                            >
+                              {item.name}
+                            </Typography>
                             <img
                               src={item.picture}
                               alt={item.name}
@@ -135,12 +145,7 @@ export default function Cart() {
                                 marginRight: "10px",
                               }}
                             />
-                            <Typography
-                              variant="body1"
-                              sx={{ fontWeight: 500 }}
-                            >
-                              {item.name}
-                            </Typography>
+                            
                           </Box>
                         </Grid>
                         <Grid item xs={2}>
@@ -152,6 +157,7 @@ export default function Cart() {
                           <Box
                             sx={{
                               display: "flex",
+                              flexWrap: "wrap",
                               alignItems: "center",
                             }}
                           >
